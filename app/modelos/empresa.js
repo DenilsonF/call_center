@@ -5,7 +5,9 @@ var mongoose = require('mongoose'),
 var agenteReceptivo= new schema({
   nome:{type: String},
   cnpj:{type: String}
-
+  email:{type: String}
+  endereco:{type: String}
+  telefone:{type: Number}
   })
 
   module.esxports = mongoose.model('Agente Receptivo', agenteReceptivo);

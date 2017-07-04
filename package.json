@@ -1,0 +1,27 @@
+{
+  "name": "call_center",
+  "version": "1.0.0",
+  "description": "Projeto do Sistema de Call Center para controle de ligações em um estabelecimento.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DenilsonF/call_center.git"
+  },
+  "author": "denilson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DenilsonF/call_center/issues"
+  },
+  "homepage": "https://github.com/DenilsonF/call_center#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "config": "^1.26.1",
+    "expres": "0.0.5",
+    "mongoose": "^4.11.1",
+    "nodemon": "^1.11.0"
+  },
+  "devDependencies": {}
+}

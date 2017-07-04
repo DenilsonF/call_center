@@ -4,51 +4,53 @@ routes = express.Router();
 
 //...
 
-routes.get('cliente/:id', function(req,res){
-cliente.findOne({id:req.params.id}) .then((client))=>{
+routes.get('agente/:id', function(req,res){
+agente.findOne({id:req.params.id}) .then((agent))=>{
   res.json({
     sucess: true,
-    result: usr
+    result: ag
   })
 },...);
 })
-routes.get('/cliente' fuction(req,res){
-  cliente.find({}).the((clients)=>{
+routes.get('/agente' fuction(req,res){
+  cliente.find({}).the((agents)=>{
     res.json({
       sucess: true,
-      result:usrs
+      result:ags
     });
   }, (err)=> {
 
   });
 })
 
-routes.post('/cliente', function (req, res){
-  var user = new Cliente({
+routes.post('/agente', function (req, res){
+  var user = new Agente({
     nome: req.body.nome,
     endereco: req.body.endereco,
     telefone: req.body.telefone,
     cpf: req.body.cpf,
-    email: req.body.email
+    email: req.body.email,
+    comissao: req.body.comissao
   });
   user.save().then((obj) =>{
     res.json({
       sucess: true
     });
-
   },(err) =>{
     res.json({
       sucess: false
     });
   });
 })
-routes.put('/cliente/:id', function(req,res){
-  cliente.update({_id:req.params.id}, {$set: {
+
+routes.put('/agentee/:id', function(req,res){
+  agente.update({_id:req.params.id}, {$set: {
     nome: req.body.nome,
     endereco: req.body.endereco,
     telefone: req.body.telefone,
     cpf: req.body.cpf,
-    email: req.body.email
+    email: req.body.email,
+    comissao: req.body.comissao
   }})
   .then((obj) => {
   res.json({

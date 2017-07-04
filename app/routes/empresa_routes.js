@@ -4,50 +4,40 @@ routes = express.Router();
 
 //...
 
-routes.get('cliente/:id', function(req,res){
-cliente.findOne({id:req.params.id}) .then((client))=>{
+routes.get('empresa/:id', function(req,res){
+empresa.findOne({id:req.params.id}) .then((company))=>{
   res.json({
     sucess: true,
-    result: usr
+    result: comp
   })
 },...);
 })
-routes.get('/cliente' fuction(req,res){
-  cliente.find({}).the((clients)=>{
-    res.json({
-      sucess: true,
-      result:usrs
-    });
-  }, (err)=> {
 
-  });
-})
-
-routes.post('/cliente', function (req, res){
-  var user = new Cliente({
+routes.post('/empresa', function (req, res){
+  var user = new Agente({
     nome: req.body.nome,
+    cnpj: req.body.cnpj
     endereco: req.body.endereco,
     telefone: req.body.telefone,
-    cpf: req.body.cpf,
-    email: req.body.email
+    email: req.body.email,
   });
   user.save().then((obj) =>{
     res.json({
       sucess: true
     });
-
   },(err) =>{
     res.json({
       sucess: false
     });
   });
 })
-routes.put('/cliente/:id', function(req,res){
-  cliente.update({_id:req.params.id}, {$set: {
+
+routes.put('/empresa/:id', function(req,res){
+  empresa.update({_id:req.params.id}, {$set: {
     nome: req.body.nome,
+    cnpj: req.body.cnpj,
     endereco: req.body.endereco,
     telefone: req.body.telefone,
-    cpf: req.body.cpf,
     email: req.body.email
   }})
   .then((obj) => {
