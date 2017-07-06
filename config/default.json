@@ -1,0 +1,5 @@
+{
+  "ambiente": "executando ambiente de desenvolvimento padrao",
+  "database": "mongodb://call_center:asdasd@localhost:27017/call_center?authSource=admin"
+
+}

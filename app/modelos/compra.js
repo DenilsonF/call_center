@@ -10,4 +10,4 @@ var agenteReceptivo= new schema({
     codigoDoProduto:{type:String}
   })
 
-  module.esxports = mongoose.model('Agente Receptivo', agenteReceptivo);
+  module.exports = mongoose.model('Agente Receptivo', agenteReceptivo);

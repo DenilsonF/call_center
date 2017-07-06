@@ -5,15 +5,15 @@ routes = express.Router();
 //...
 
 routes.get('cliente/:id', function(req,res){
-cliente.findOne({id:req.params.id}) .then((client))=>{
+cliente.findById({req.params.id}).then((cliente))=>{
   res.json({
     sucess: true,
-    result: usr
+    result: cliente
   })
 },...);
 })
-routes.get('/cliente' fuction(req,res){
-  cliente.find({}).the((clients)=>{
+routes.get('/cliente' function(req,res){
+  cliente.find({}).then((clients)=>{
     res.json({
       sucess: true,
       result:usrs

@@ -14,7 +14,7 @@ empresa.findOne({id:req.params.id}) .then((company))=>{
 })
 
 routes.post('/empresa', function (req, res){
-  var user = new Agente({
+  var user = new Empresa({
     nome: req.body.nome,
     cnpj: req.body.cnpj
     endereco: req.body.endereco,
