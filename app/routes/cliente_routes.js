@@ -1,62 +1,58 @@
-var express = require('express'),
-cliente = require('../modelos/cliente'),
-routes = express.Router();
+var express = require('express')
+var cliente = require('../modelos/cliente')
+var routes = express.Router()
 
-//...
-
+// rota para busca de dados do cliente por id
 routes.get('cliente/:id', function(req,res){
-cliente.findById({req.params.id}).then((cliente))=>{
+cliente.findById(req.params.id).then(
+  cliente => {
   res.json({
     sucess: true,
     result: cliente
   })
-},...);
+}, erro => {
+    res.json({
+      sucess: false,
+      result: erro
+    })
+  });
 })
-routes.get('/cliente' function(req,res){
-  cliente.find({}).then((clients)=>{
+
+//busca os dados de todos os cliente
+routes.get('/cliente', function(req,res){
+  cliente.find({}).then(
+    clients => {
     res.json({
       sucess: true,
-      result:usrs
+      result: clients
     });
-  }, (err)=> {
-
+  }, erro => {
+     res.json({
+       sucess: false,
+       result: erro
+     })
   });
 })
 
+//cadastrar cliente
 routes.post('/cliente', function (req, res){
-  var user = new Cliente({
+  var user = new cliente({
     nome: req.body.nome,
     endereco: req.body.endereco,
     telefone: req.body.telefone,
     cpf: req.body.cpf,
     email: req.body.email
   });
-  user.save().then((obj) =>{
+  user.save().then(obj => {
     res.json({
       sucess: true
-    });
-
-  },(err) =>{
+    })
+  }, erro => {
     res.json({
-      sucess: false
+      sucess: false,
+      result: erro
     });
   });
 })
-routes.put('/cliente/:id', function(req,res){
-  cliente.update({_id:req.params.id}, {$set: {
-    nome: req.body.nome,
-    endereco: req.body.endereco,
-    telefone: req.body.telefone,
-    cpf: req.body.cpf,
-    email: req.body.email
-  }})
-  .then((obj) => {
-  res.json({
-    sucess: true
-  });
-}, (err)=> {
-  retornaErro(res, err)
 
-})
-
-module.exports = server;
+module.exports = routes;

@@ -10,8 +10,7 @@ app.use(require('./app/routes/cliente_routes'))
 
 app.listen(3000,function(){
 console.log(" Aplicacao rodando na porta 3000!");
- })
-
+})
 
 /*
 git add --ignore-removal .
