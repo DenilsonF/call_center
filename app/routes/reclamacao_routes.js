@@ -2,27 +2,39 @@ var express = require('express'),
 reclamcao = require('../modelos/reclamacao'),
 routes = express.Router();
 
-//...
 
+//rota para busca de dados de reclamacao por id
 routes.get('reclamacao/:id', function(req,res){
-reclamacao.findOne({id:req.params.id}) .then((
-complaint))=>{
+reclamacao.findOne({id:req.params.id}) .then(
+complaint=>{
   res.json({
     sucess: true,
-    result: usr
+    result: complaint
   })
-},...);
-})
-routes.get('/reclamacao' fuction(req,res){
-  reclamacao.find({}).the((claims)=>{
-    res.json({
-      sucess: true,
-      result:usrs
-    });
-  }, (err)=> {
-
+},erro => {
+  res.json({
+    sucess: false,
+    result: erro
+   })
   });
 })
+
+//rota para busca os dados de todas as reclamacoes
+routes.get('/reclamacao', function(req,res){
+  reclamacao.find({}).then(claims=>{
+    res.json({
+      sucess: true,
+      result:claims
+    });
+  }, erro => {
+    res.json({
+      sucess: false,
+      result: erro
+    })
+  });
+})
+
+//rota para cadastrar reclamacao
 routes.post('/reclamacao', function (req, res){
   var user = new Reclamacao({
 
@@ -30,30 +42,17 @@ routes.post('/reclamacao', function (req, res){
     codigoDeReclamcao: req.body.codigoDeReclamcao,
     codigoDoProduto: req.body.codigoDoProduto
   });
-  user.save().then((obj) =>{
+  user.save().then(obj =>{
     res.json({
       sucess: true
     });
 
-  },(err) =>{
+  },erro => {
     res.json({
-      sucess: false
+      sucess: false,
+      result: erro
     });
   });
 })
-routes.put('/reclamacao/:id', function(req,res){
-  reclamacao.update({_id:req.params.id}, {$set: {
-    descricao: req.body.descricao,
-    codigoDeReclamacao: req.body.codigoDeReclamacao,
-    codigoDoProduto: req.body.codigoDoProduto
-  }})
-  .then((obj) => {
-  res.json({
-    sucess: true
-  });
-}, (err)=> {
-  retornaErro(res, err)
 
-})
-
-module.exports = server;
+module.exports = routes;

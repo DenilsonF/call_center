@@ -2,11 +2,11 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 
-var agenteReceptivo= new schema({
+var reclamacao= new Schema({
    descricao:{type: String},
    codigoDeReclamcao:{type: String},
    codigoDoProduto:{type: String}
 
   })
 
-  module.esxports = mongoose.model('Agente Receptivo', agenteReceptivo);
+  module.exports = mongoose.model('reclamacao', reclamacao);

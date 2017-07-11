@@ -1,28 +1,39 @@
 var express = require('express'),
-cliente = require('../modelos/cliente'),
+agente = require('../modelos/agente'),
 routes = express.Router();
 
-//...
 
+//rota para busca de dados do agente por id
 routes.get('agente/:id', function(req,res){
-agente.findOne({id:req.params.id}) .then((agent))=>{
+agente.findOne({id:req.params.id}) .then(agent=>{
   res.json({
     sucess: true,
-    result: ag
+    result: agent
   })
-},...);
+}, erro => {
+    res.json({
+      sucess: false,
+      result: erro
+    });
 })
-routes.get('/agente' fuction(req,res){
-  cliente.find({}).the((agents)=>{
+})
+
+//rota para busca os dados de todos os agentes
+routes.get('/agente', function (req, res){
+  cliente.find({}).then(agents=>{
     res.json({
       sucess: true,
-      result:ags
+      result:agents
     });
-  }, (err)=> {
-
-  });
+  }, erro => {
+      res.json({
+        sucess: false,
+        result: erro
+     })
+ })
 })
 
+//rota para cadastrar cliente
 routes.post('/agente', function (req, res){
   var user = new Agente({
     nome: req.body.nome,
@@ -32,7 +43,7 @@ routes.post('/agente', function (req, res){
     email: req.body.email,
     comissao: req.body.comissao
   });
-  user.save().then((obj) =>{
+  user.save().then(obj =>{
     res.json({
       sucess: true
     });
@@ -43,22 +54,4 @@ routes.post('/agente', function (req, res){
   });
 })
 
-routes.put('/agentee/:id', function(req,res){
-  agente.update({_id:req.params.id}, {$set: {
-    nome: req.body.nome,
-    endereco: req.body.endereco,
-    telefone: req.body.telefone,
-    cpf: req.body.cpf,
-    email: req.body.email,
-    comissao: req.body.comissao
-  }})
-  .then((obj) => {
-  res.json({
-    sucess: true
-  });
-}, (err)=> {
-  retornaErro(res, err)
-
-})
-
-module.exports = server;
+module.exports = routes;

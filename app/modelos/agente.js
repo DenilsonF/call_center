@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 
-var agenteReceptivo= new schema({
+var agente= new Schema({
   nome: {type: String},
   email:{type: String},
   tipoAgente:{type: String},
@@ -14,4 +14,4 @@ var agenteReceptivo= new schema({
 
   })
 
-  module.exports = mongoose.model('Agente Receptivo', agenteReceptivo);
+  module.exports = mongoose.model('Agente Receptivo', agente);
