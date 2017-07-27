@@ -21,10 +21,10 @@ cliente.findById(req.params.id).then(
 //busca os dados de todos os cliente
 routes.get('/cliente', function(req,res){
   cliente.find({}).then(
-    clients => {
+    clientes => {
     res.json({
       sucess: true,
-      result: clients
+      result: clientes
     });
   }, erro => {
      res.json({

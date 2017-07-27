@@ -12,10 +12,12 @@ app.use(bodyParser.json())
 app.use(require('./app/routes/cliente_routes'))
 app.use(require('./app/routes/agente_routes'))
 app.use(require('./app/routes/reclamacao_routes'))
-app.use('/api', router)
+//app.use('/api', router)
 
 //conexao ao database
-mongoose.connect(config.database)
+mongoose.connect(config.database, {
+  useMongoClient: true
+})
 
 app.listen(3000,function(){
 console.log(" Aplicacao rodando na porta 3000!");
