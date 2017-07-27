@@ -3,6 +3,8 @@ var bodyParser = require('body-parser')
 var app = express()
 var mongoose = require('mongoose')
 var config = require('config')
+var router = express.Router()
+
 
 mongoose.Promise = global.Promise;
 
@@ -10,6 +12,7 @@ app.use(bodyParser.json())
 app.use(require('./app/routes/cliente_routes'))
 app.use(require('./app/routes/agente_routes'))
 app.use(require('./app/routes/reclamacao_routes'))
+app.use('/api', router)
 
 //conexao ao database
 mongoose.connect(config.database)
